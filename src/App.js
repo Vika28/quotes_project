@@ -1,4 +1,4 @@
-import React, { Sucpense } from 'react';
+import React, { Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 // import AllQuotes from "./pages/AllQuotes";
 // import QuoteDetail from "./pages/QuoteDetail";
@@ -15,7 +15,7 @@ const AllQuotes = React.lazy(() => import('./pages/AllQuotes'));
 function App() {
   return (
       <Layout>
-          <Sucpense fallback={<div className='centered'>
+          <Suspense fallback={<div className='centered'>
               <LoadingSpinner />
           </div>}>
               <Switch>
@@ -35,7 +35,7 @@ function App() {
                       <NotFound />
                   </Route>
               </Switch>
-          </Sucpense>
+          </Suspense>
       </Layout>
   );
 }
