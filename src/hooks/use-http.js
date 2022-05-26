@@ -36,19 +36,19 @@ function useHttp(requestFunction, startWithPending = false) {
   });
 
   const sendRequest = useCallback(
-    async function (requestData) {
-      dispatch({ type: 'SEND' });
-      try {
-        const responseData = await requestFunction(requestData);
-        dispatch({ type: 'SUCCESS', responseData });
-      } catch (error) {
-        dispatch({
-          type: 'ERROR',
-          errorMessage: error.message || 'Something went wrong!',
-        });
-      }
-    },
-    [requestFunction]
+      async function (requestData) {
+        dispatch({ type: 'SEND' });
+        try {
+          const responseData = await requestFunction(requestData);
+          dispatch({ type: 'SUCCESS', responseData });
+        } catch (error) {
+          dispatch({
+            type: 'ERROR',
+            errorMessage: error.message || 'Something went wrong!',
+          });
+        }
+      },
+      [requestFunction]
   );
 
   return {
